@@ -2,11 +2,14 @@ import express from 'express'
 import { connection } from './config/db.js'
 import './models/Produto.js'
 import router from './routes/index.js'
+import './models/associacao.js'
+
 
 const app = express()
-
 app.use(express.json())
 
+
+//Starta o servidor e cria as tabelas
 async function startServer() {
     try{
         await connection.authenticate()//autentica a servidor
