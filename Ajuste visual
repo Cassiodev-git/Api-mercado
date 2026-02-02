@@ -56,7 +56,7 @@ Fluxo da aplicação:
 
 Exemplo de corpo da requisição:
 
-```json
+json
 {
   "nome": "Arroz Branco 5kg",
   "preco": 27.90,
