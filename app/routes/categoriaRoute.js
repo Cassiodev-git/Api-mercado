@@ -1,10 +1,11 @@
 import Router  from "express";
-import { listar, cadastra } from "../controllers/CategoriaController.js";
-
+import CategoriaController from "../controllers/CategoriaController.js";
 const router = Router()
 
-router.get("/", listar)
-router.post("/", cadastra)
+router.get("/", CategoriaController.listar)
+router.post("/", CategoriaController.criar)
+router.put("/:id", CategoriaController.atualizar)
+router.delete("/:id", CategoriaController.deletar)
 
 
 export default router

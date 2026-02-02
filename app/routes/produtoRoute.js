@@ -1,10 +1,11 @@
 import Router from 'express'
-import { listar, cadastrar } from '../controllers/ProdutoController.js'
-
+import ProdutoController from '../controllers/ProdutoController.js' 
 const router = Router()
 
-router.get("/",listar)
-router.post("/",cadastrar)
+router.get("/",ProdutoController.listar)
+router.post("/",ProdutoController.cadastrar)
+router.put("/:id", ProdutoController.atualizar)
+router.delete("/:id", ProdutoController.deletar)
 
 
 
