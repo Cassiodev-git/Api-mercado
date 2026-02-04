@@ -1,0 +1,33 @@
+import Usuario from "../models/Usuario.js";
+
+
+class UsuarioRepository{
+    async listar(){
+        return Usuario.findAll(
+            {
+                attributes:['id', 'nome', 'email']
+            }
+        )
+    }
+    async listarLogin(email){
+        return Usuario.findOne(
+            {   where: {email},
+                attributes: ['email','senha','adm']
+            }
+        )
+    }
+    async criar(dados){
+        return Usuario.create(dados)
+    }
+    async atualizar(id, dados){
+        return Usuario.update(dados,{
+            where: {id}
+        })
+    }
+    async deletar(id){
+        return Usuario.destroy({
+            where: {id}
+        })
+    }
+}
+export default new UsuarioRepository()

@@ -1,6 +1,7 @@
 import express from 'express'
 import { connection } from './config/db.js'
 import './models/Produto.js'
+import './models/Usuario.js'
 import router from './routes/index.js'
 import './models/associacao.js'
 
