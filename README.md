@@ -103,7 +103,7 @@ Exemplo de corpo da requisição:
 
 ### Clone o repositório:
 
-git clone https://github.com/Cassiodev-git/nome-do-repositorio
+git clone https://github.com/Cassiodev-git/Api-mercado
 
 
 Instale as dependências:
