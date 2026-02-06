@@ -4,51 +4,60 @@
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-API REST desenvolvida em **Node.js** utilizando **Express** e **Sequelize**, com foco em **organização de backend**, separação de responsabilidades e aplicação de boas práticas.
+API REST desenvolvida em **Node.js** utilizando **Express** e **Sequelize**, com foco em **organização de backend**, **separação de responsabilidades** e aplicação de **boas práticas de arquitetura**.
 
-O projeto simula um **sistema de mercado**, permitindo o gerenciamento de **produtos, categorias e usuários**, servindo como base para futuras evoluções como autenticação e controle de acesso.
+O projeto simula um **sistema de mercado**, permitindo o gerenciamento de **produtos, categorias e usuários**, além de contar com **autenticação via JWT** e **controle de acesso por middleware**.
 
-> ⚠️ **Observação:** por motivos de segurança, as credenciais de conexão com o banco de dados não estão incluídas no repositório.  
-> A aplicação utiliza variáveis de ambiente definidas em um arquivo `.env`, que não é versionado.
+Esta API foi construída com o objetivo de consolidar conceitos fundamentais de backend, servindo como base para futuras evoluções e integração com frontend.
+
+⚠️ **Observação de segurança**
+
+ As credenciais de conexão com o banco de dados e o segredo do JWT não estão incluídos no repositório.
+ A aplicação utiliza variáveis de ambiente definidas em um arquivo `.env`, que não é versionado.
 
 ---
 
 ## 🚀 Tecnologias utilizadas
 
-- Node.js  
-- Express  
-- Sequelize  
-- MariaDB  
-- JavaScript (ES Modules)  
-- dotenv  
+- Node.js
+- Express
+- Sequelize
+- MariaDB
+- JavaScript (ES Modules)
+- JWT (jsonwebtoken)
+- dotenv
 
 ---
 
 ## 🧱 Arquitetura
 
-A aplicação segue uma arquitetura em camadas, priorizando legibilidade e manutenção do código:
-
+A aplicação segue uma arquitetura em camadas, priorizando **manutenção**, **testabilidade** e **clareza de responsabilidades**.
 
 .
-├── config/          # Configuração da conexão com o banco de dados
-├── controllers/     # Lógica das requisições e respostas
-├── middlewares/     # Validação e normalização de dados
-├── models/          # Entidades e relacionamentos (ORM)
-├── routes/          # Definição das rotas HTTP
-└── server.js        # Inicialização da aplicação
+├── config/          # Configurações da aplicação (DB, env)
+├── controllers/     # Tratamento das requisições HTTP
+├── middlewares/     # Autenticação, autorização e validações
+├── models/          # Models e relacionamentos (ORM)
+├── routes/          # Definição das rotas da API
+├── services/        # Regras de negócio
+└── server.js        # Inicialização do servidor
+
 
 Fluxo da aplicação:
+
+Requisição → Route → Middleware → Controller → Service → Model → Banco de Dados
 
 ---
 
 ### Responsabilidades
 
-- **Routes**: definem os endpoints e direcionam para os controllers  
-- **Controllers**: processam as requisições e retornam as respostas  
-- **Models**: representam as entidades e o acesso ao banco de dados  
-- **Middlewares**: validam e preparam os dados antes de chegar aos controllers  
-- **Config**: centraliza a configuração da conexão com o banco  
-  
+- **Routes**: definem os endpoints e direcionam a requisição
+- **Middlewares**: validam autenticação, permissões e dados
+- **Controllers**: lidam com Request/Response
+- **Services**: concentram regras de negócio
+- **Models**: representam as entidades e o acesso ao banco
+- **Config**: centraliza configurações globais
+
 
 
 ---
@@ -56,6 +65,7 @@ Fluxo da aplicação:
 ## 📌 Endpoints disponíveis
 
 ### 🔹 Rota inicial
+
 **GET /**  
 - Retorna uma mensagem de boas-vindas da API
 
@@ -89,6 +99,21 @@ Fluxo da aplicação:
 **POST /usuarios**  
 - Cadastra um novo usuário
 
+### 🔹 Login
+
+**POST /login**  
+- Realiza autenticação do usuário e retorna um token JWT
+
+- Autenticação realizada via **JWT**
+
+- Token deve ser enviado no header:
+
+Authorization: Bearer <token>
+
+- Middleware de autenticação protege rotas sensíveis
+- Middleware de autorização verifica permissões de administrador
+
+
 Exemplo de corpo da requisição:
 
 ```json
@@ -105,12 +130,13 @@ Exemplo de corpo da requisição:
 
 git clone https://github.com/Cassiodev-git/Api-mercado
 
+### Acesse o diretório
+cd apiRest
 
-Instale as dependências:
-
+### Instale as dependências
 npm install
 
-
+### Crie o arquivo .env
 Crie o arquivo .env na raiz do projeto com as variáveis:
 
 DB_HOST=localhost
@@ -133,12 +159,13 @@ http://localhost:4000
 
 ## 📈 Próximas evoluções
 
-- Cadastro de categorias  
-- Relacionamento entre produtos e categorias  
-- Validação de dados  
-- Paginação  
-- Autenticação  
-- Documentação com Swagger  
+- Paginação e filtros
+- Relacionamentos avançados
+- Validação de dados com schemas
+- Refresh Token
+- Documentação com Swagger
+- Integração com frontend
+
 
 ## 📝 Status do projeto
 
@@ -146,8 +173,7 @@ http://localhost:4000
 
 ---
 
-## 👤 Autor
-
 Desenvolvido por **Cássio Lúcio**
 
+Projeto criado com foco em aprendizado prático de backend, arquitetura REST e segurança.
 
