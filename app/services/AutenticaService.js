@@ -22,7 +22,6 @@ class AutenticaService{
                 id: dados.id,
                 email: dados.email,
                 adm: dados.adm
-                
             }
             return resultado
         }else{
@@ -31,9 +30,7 @@ class AutenticaService{
                 mensagem: "Credencias inválidas"
             }
             return resultado
-        }
-        
-        
+        } 
     }
 }
 export default new AutenticaService()

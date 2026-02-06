@@ -1,3 +1,4 @@
+import "./config/env.js"
 import express from 'express'
 import { connection } from './config/db.js'
 import './models/Produto.js'

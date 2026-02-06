@@ -12,7 +12,7 @@ class UsuarioRepository{
     async listarLogin(email){
         return Usuario.findOne(
             {   where: {email},
-                attributes: ['email','senha','adm']
+                attributes: ['id','email','senha','adm']
             }
         )
     }
