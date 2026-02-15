@@ -160,7 +160,6 @@ http://localhost:4000
 ## 📈 Próximas evoluções
 
 - Paginação e filtros
-- Relacionamentos avançados
 - Validação de dados com schemas
 - Refresh Token
 - Documentação com Swagger
